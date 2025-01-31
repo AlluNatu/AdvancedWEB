@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" defer></script>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">This is cool</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="col">
+            <form id="tofoForm">
+                <label for="userInput">User</label>
+                <input id="userInput" type="text" placeholder="Name">
+                <label for="todoInput">Todo</label>
+                <input id="todoInput" type="text" placeholder="To-do">
+                <button id="submit-data" type="submit" class="btn">Submit data</button>
+            </form>
+            <p id="ifJsonSuccess"></p>
+        </div>
+
+        <div class="col">
+            <form id="searchForm" action="">
+                <label for="search">Search</label>
+                <input type="text" id="searchInput" placeholder="Name">
+                <button id="search" class="btn">Search</button>
+            </form>
+            <p id="ifFoundUser"></p>
+            <ul id="todoList"></ul>
+            <button id="deleteUser" class="btn" style="visibility: hidden;">DELETE</button>
+        </div>
+    </div>
+</body>
+</html>
