@@ -19,7 +19,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.1.9",
     "path": "^0.12.7",
-    "tsc-watch": "^6.2.1"
+    "tsc-watch": "^6.2.1",
+    "week7": "file:"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

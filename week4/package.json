@@ -13,7 +13,8 @@
     "express": "^4.21.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.7",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "week4": "file:"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
