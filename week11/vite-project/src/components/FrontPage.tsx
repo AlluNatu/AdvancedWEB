@@ -18,7 +18,7 @@ interface FrontPageProps {
 
 
 const FrontPage: React.FC<FrontPageProps> = ({ saveJoke }) => {    // SE .FC AUTTAA SIIHEN ETTÄ NE MITÄ ON SULKEIS ON SE MITÄ OTTAA VASTAA. EI SE MITÄ LÄHETTÄÄ
-    let [generate, setGenerate] = useState(true);
+    const [generate, setGenerate] = useState(true);
     const url:string = "https://official-joke-api.appspot.com/random_joke"
     const {data, loading, error} = useFetch(url, generate)
     const convertedData: IJoke = data as IJoke

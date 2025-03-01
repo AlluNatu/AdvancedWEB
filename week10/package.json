@@ -14,8 +14,8 @@
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
-    "react": "file:",
-    "react-dom": "^18.3.1",
+    "react": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-i18next": "^15.4.0",
     "react-router-dom": "^7.1.3"
   },
