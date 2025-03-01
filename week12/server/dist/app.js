@@ -8,8 +8,16 @@ const path_1 = __importDefault(require("path"));
 const index_1 = __importDefault(require("./src/routing/index"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
-const port = 3000;
+const port = 1234;
+if (process.env.NODE_ENV === "development") {
+    const corsOptions = {
+        origin: 'http://localhost:3000',
+        optionsSuccessStatus: 200
+    };
+    app.use((0, cors_1.default)(corsOptions));
+}
 const mongoDB = "mongodb://127.0.0.1:27017/testdb";
 mongoose_1.default.connect(mongoDB);
 mongoose_1.default.Promise = Promise;

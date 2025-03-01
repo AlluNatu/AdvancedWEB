@@ -13,7 +13,7 @@ let bookSchema: Schema = new Schema ({
     pages: {type: Number, required: true}
 })
 
-const Books: mongoose.Model<IBook> = mongoose.model<IBook>("topics", bookSchema)
+const Books: mongoose.Model<IBook> = mongoose.model<IBook>("Books", bookSchema)
 
 export {Books, IBook}
 

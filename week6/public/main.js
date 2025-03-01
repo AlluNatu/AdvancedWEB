@@ -29,7 +29,7 @@ document.getElementById("offerForm").addEventListener("submit", async function(e
 
     
 })
-
+// 
 const fetchdata = async() => {
     try {
         const response = await fetch('/offers');
