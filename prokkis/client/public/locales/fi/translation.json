@@ -1,0 +1,25 @@
+{
+    "Home": "Etusivu",
+    "About": "Tietoa Meistä",
+    "This is the front page": "Tämä on etusivu",
+    "Notes app": "Muistio sovellus",
+    "logout": "Kirjaudu ulos",
+    "login": "Kirjaudu",
+    "signup": "Luo käyttäjä",
+    "Add": "Lisää", 
+    "Add new notw": "Lisää uusi muistio",
+    "Add note": "Lisää muistio",
+    "Title": "Otsikko",
+    "Cotent": "Sisältö",
+    "Status": "Tila",
+    "To do": "Tehtävä",
+    "In-Progress": "Kesken",
+    "Done": "Tehty",
+    "submit": "Lähetä",
+    "Log in": "Kirjaudu sisään",
+    "Email": "Sähköposti",
+    "Password": "Salsana",
+    "Don't have an account? Sign Up": "Ei löydy käyttäjää? Tee sellainen!"
+    
+
+}
