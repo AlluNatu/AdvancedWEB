@@ -36,9 +36,9 @@ const FrontPage: React.FC<FrontPageProps> = ({ saveJoke }) => {    // SE .FC AUT
 
   return (
     <>
-        <Button onClick={handleClick} variant="outlined">GetJoke</Button>
+        <Button onClick={handleClick} variant="outlined">Get Joke</Button>
         <Button onClick={handleClickSave} variant="outlined">Save</Button>
-        {loading && <p>Loading data...</p>}
+        {loading && <p>Loading a joke...</p>}
         {error && <p>{error}</p>}
         {convertedData && (
                     <Card key={convertedData.id} style={{ margin: "20px auto", maxWidth: 400 }}>
