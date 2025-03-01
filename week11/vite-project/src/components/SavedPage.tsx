@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import useJokes  from "../hooks/useJokes"
 import Button from '@mui/material/Button';
 
 
@@ -14,11 +13,11 @@ interface IJoke {
 
 interface SavedPageProps {
     savedJokes: IJoke[],
-    updateList: (joke: number) => void
+    deleteJoke: (id: number) => void;
 }
 
 
-const SavedPage: React.FC<SavedPageProps> = ({ savedJokes, updateList }) => {    // SE .FC AUTTAA SIIHEN ETTÄ NE MITÄ ON SULKEIS ON SE MITÄ OTTAA VASTAA. EI SE MITÄ LÄHETTÄÄ
+const SavedPage: React.FC<SavedPageProps> = ({ savedJokes, deleteJoke }) => {    // SE .FC AUTTAA SIIHEN ETTÄ NE MITÄ ON SULKEIS ON SE MITÄ OTTAA VASTAA. EI SE MITÄ LÄHETTÄÄ
 
     return (
         <div>
@@ -31,7 +30,7 @@ const SavedPage: React.FC<SavedPageProps> = ({ savedJokes, updateList }) => {   
                 <Typography variant="h6">{joke.setup}</Typography>
                 <Typography variant="body1">{joke.punchline}</Typography>
                 </CardContent>
-                <Button onClick={() => updateList(joke.id)} variant="outlined">Delete</Button>
+                <Button onClick={() => deleteJoke(joke.id)} variant="outlined">Delete</Button>
             </Card>
             ))
         )}

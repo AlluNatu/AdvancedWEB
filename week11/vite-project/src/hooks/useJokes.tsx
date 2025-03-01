@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface IJoke {
     setup: string,
@@ -7,21 +7,21 @@ interface IJoke {
 }
 
 const useJokes = () => {
-    const [jokes, setJokes] = useState<IJoke[]>([])
+    const [savedJokes, setSavedJokes] = useState<IJoke[]>([])
 
     const saveJoke = (joke:IJoke) => {            
-        setJokes([...jokes, joke])
+        setSavedJokes([...savedJokes, joke])
     };
 
-    const updateList = (id: number) => {
+    const deleteJoke = (id: number) => {
         console.log(id);
         
-        const newList = jokes.filter((joke) => joke.id !== id);
-        setJokes(newList);
+        const newList = savedJokes.filter((joke) => joke.id !== id);
+        setSavedJokes(newList);
     }
 
 
-  return {saveJoke, jokes, updateList}
+  return {saveJoke, savedJokes, deleteJoke}
 }
 
-export default useJokes
+export { useJokes };
