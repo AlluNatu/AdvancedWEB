@@ -8,6 +8,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import moment from "moment"
+import { useTranslation } from 'react-i18next';
 
 interface IComment{
   text: string,
@@ -30,6 +31,7 @@ interface NoteCardProps {
 }
 
 const NoteCard: React.FC<NoteCardProps> = ({title, content, id, comments, createdat, deleteCard, moveNoteDown, moveNoteUp, addComment}) => {
+  const { t } = useTranslation();
   console.log(comments);
   
   // Returns only a component, no functions here only calls/pointers to them
@@ -49,7 +51,7 @@ const NoteCard: React.FC<NoteCardProps> = ({title, content, id, comments, create
       <ResponsiveFont text={title} variantText='h5'/>
       <ResponsiveFont text={content} variantText='body2'/>
       <ResponsiveFont text={moment(createdat).format('DD/MM/YYYY')} variantText='body2'/>
-      <ResponsiveFont text={"Comments:"} variantText='body2'/>
+      <ResponsiveFont text={t("Comments:")} variantText='body2'/>
       {/* Check that there is comments
           If there is it renders them under the given note */}
       {comments.length > 0 ? (
@@ -57,7 +59,7 @@ const NoteCard: React.FC<NoteCardProps> = ({title, content, id, comments, create
           <ResponsiveFont key={index} text={moment(comment.createdat).format('DD/MM/YYYY') + "   " +comment.text} variantText='body2' />
           ))
           ) : (
-            <ResponsiveFont text="No comments yet" variantText='body2' />
+            <ResponsiveFont text={t("No comments yet")} variantText='body2' />
           )}
           <IconButton id='commentIcon' onClick={() => addComment(id)} aria-label="comment" size="small">
         <AddCommentIcon fontSize="inherit"/>

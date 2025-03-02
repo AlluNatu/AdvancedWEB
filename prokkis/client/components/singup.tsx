@@ -5,8 +5,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, styled, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { useTranslation } from 'react-i18next';
 
 function Signup() {
+  const { t } = useTranslation();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -77,7 +79,7 @@ function Signup() {
       alignItems="center"
     >
       <Typography variant="h4" gutterBottom>
-        Sign up!
+        {t("Sign up!")}
       </Typography>
       <Box
             component="form"
@@ -97,7 +99,7 @@ function Signup() {
     <TextField name='email' id="standard-basic" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} variant="standard" />
     <TextField name='password' id="standard-basic" label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} variant="standard" />
     <Button name="signupButton" variant="contained" color="primary" onClick={handlebuttonSubmit} fullWidth>
-          Sign Up
+       {t("Sign up!")}
     </Button>
     <Button
       component="label"
@@ -106,7 +108,7 @@ function Signup() {
       tabIndex={-1}
       startIcon={<CloudUploadIcon />}
     >
-      Upload files
+      {t("Upload files")}
       <VisuallyHiddenInput
         type="file"
         accept="image/*"
@@ -114,7 +116,7 @@ function Signup() {
       />
     </Button>
     <Link href="/login" variant="body2">
-      {"Alrady have an account? Log in!"}
+      {t("Already have an account? Log in!")}
   </Link>
   </Box>
   </Box>
