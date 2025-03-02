@@ -5,8 +5,8 @@ const express_validator_1 = require("express-validator");
 const regValitor = [
     (0, express_validator_1.body)("email")
         .trim()
-        .escape(),
-    //.isEmail(),
+        .escape()
+        .isEmail(),
     (0, express_validator_1.body)("password")
         .isLength({ min: 8 })
     //.matches(/[A-Z]/)
@@ -18,8 +18,8 @@ exports.regValitor = regValitor;
 const logValidator = [
     (0, express_validator_1.body)("email")
         .trim()
-        .escape(),
-    //.isEmail()
+        .escape()
+        .isEmail(),
     (0, express_validator_1.body)("password")
         .notEmpty()
 ];
