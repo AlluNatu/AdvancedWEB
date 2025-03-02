@@ -6,9 +6,9 @@ const regValitor = [
     (0, express_validator_1.body)("email")
         .trim()
         .escape(),
-    //.isEmail(),
+    // .isEmail(),
     (0, express_validator_1.body)("password")
-        .isLength({ min: 8 })
+    // .isLength({ min: 8 })
     //.matches(/[A-Z]/)
     //.matches(/[a-z]/)
     //.matches(/[0-9]/)
@@ -18,8 +18,8 @@ exports.regValitor = regValitor;
 const logValidator = [
     (0, express_validator_1.body)("email")
         .trim()
-        .escape(),
-    //.isEmail()
+        .escape()
+        .isEmail(),
     (0, express_validator_1.body)("password")
         .notEmpty()
 ];

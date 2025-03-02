@@ -133,7 +133,7 @@ router.put('/api/updateNoteStatus', validateToken, async (req: any, res: any) =>
 // If yes then status 403 if not then makes hash of password
 // Then takes the photo from frontend and gives it a filename and path
 // Then pushes data to database and sends res200 to frontend
-router.post("/api/register", upload.single("image"), regValitor,
+router.post("/api/register", upload.single("image"), //regValitor,
     async (req: Request, res: Response) => {
         const errors: Result<ValidationError> = validationResult(req)
 
@@ -200,7 +200,7 @@ router.post("/api/register", upload.single("image"), regValitor,
 // If yes then check if hash is good
 // If yes then send token to frontend
 // If no then error
-router.post("/api/login", logValidator,
+router.post("/api/login", //logValidator,
     async (req: Request, res: Response) => {
         const errors: Result<ValidationError> = validationResult(req)
         

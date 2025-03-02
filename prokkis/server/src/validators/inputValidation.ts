@@ -3,10 +3,10 @@ import { body, validationResult } from "express-validator";
 const regValitor = [
   body("email")
     .trim()
-    .escape()
-    .isEmail(),
+    .escape(),
+    // .isEmail(),
   body("password")
-    .isLength({ min: 8 })
+    // .isLength({ min: 8 })
     //.matches(/[A-Z]/)
     //.matches(/[a-z]/)
     //.matches(/[0-9]/)
