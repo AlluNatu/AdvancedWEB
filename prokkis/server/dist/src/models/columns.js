@@ -35,9 +35,16 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Columns = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
+/**
+ * Mongoose schema definition for the Column model
+ * Specifies the fields, their types, and validation requirements
+ */
 let columnSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     userid: { type: String, required: true },
 });
+/**
+ * Mongoose model for Column documents
+ */
 const Columns = mongoose_1.default.model("Columns", columnSchema);
 exports.Columns = Columns;
