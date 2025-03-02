@@ -17,7 +17,8 @@
   "description": "",
   "dependencies": {
     "concurrently": "^9.1.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "prokkis": "file:"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17"

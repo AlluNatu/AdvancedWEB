@@ -7,6 +7,7 @@ import PopUp from './popUp';
 import PopUpColumn from './PopUpColumn';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useTranslation } from 'react-i18next';
 
 // Setup interfaces, because typescript is more fun with these
 
@@ -41,6 +42,8 @@ interface IColumnCard {
 }
 
 function Home() {
+
+  const { t } = useTranslation();
   // Usestates to use later
   const [token, setToken] = useState<string | null>(null);
   const [items, setItems] = useState<INoteCard[]>([]);
@@ -53,13 +56,13 @@ function Home() {
     if (!storedToken) {
       window.location.href = '/login'
       return
-    }
+    };
     setToken(storedToken)
   }, []);
 
   // Get all notesandcolumns from user. Has token for reason that user gets their own notes and columns
   useEffect(() => {
-    if (!token) return
+    if (!token) return;
     else {
       fetch('http://localhost:3001/api/getNotesandColumns', {
         headers: {
@@ -72,14 +75,14 @@ function Home() {
         if (data.error) {
           window.location.href = '/login'
         } else {
-          setLoading(false)
-          setItems(data.notesList)
-          setColumns(data.columnsList)
+          setLoading(false);
+          setItems(data.notesList);
+          setColumns(data.columnsList);
           console.log(data);
           
-        }
+        };
       })
-  }
+  };
   }, [token]);
 
   if (loading) {
@@ -120,7 +123,7 @@ function Home() {
 
     // Deletes note. Takes it from items and backend database
     function deleteCard (id: string) {
-      console.log(id);
+      // console.log(id);
       
       const newList = items.filter((item) => item._id !== id);
       fetch('http://localhost:3001/api/noteDelete', {
@@ -140,7 +143,7 @@ function Home() {
       // Then changes the position indexes with the one on top
       // Then renders the change and sends new data to backend to save into db
       function moveNoteUp (id: string) {
-        const noteIndex = items.findIndex((item) => item._id === id);
+        const noteIndex = items.findIndex((item) => item._id === id)
         if (noteIndex > 0) {
           const updatedItems = [...items];
           [updatedItems[noteIndex], updatedItems[noteIndex - 1]] = [updatedItems[noteIndex - 1], updatedItems[noteIndex]];
@@ -198,7 +201,7 @@ function Home() {
       // After adding renders the new column and sends it to backend to save into db
       const addColumn = (newColumn: IColumn) => {
         if (columns.some(col => col.name === newColumn.name)) {
-          alert("A column with this name already exists");
+          alert(t("A column with this name already exists"));
           return;
         }
         const cool = newColumn
@@ -219,7 +222,7 @@ function Home() {
       // And ofcourse title and content, then send it to db
       const addNote = (newNote: INote) => {
         if (!newNote.status){
-          alert("Cannot make a new note without column")
+          alert(t("Cannot make a new note without column"))
           return
         }
         const cool = newNote
@@ -266,12 +269,12 @@ function Home() {
     // If given finds old column, gives new name, renders it
     // Then sends all data to backend where it can change the data for future
     function changeName(id: string, status:string){
-       const newName = prompt("Enter new name for the column");
+       const newName = prompt(t("Enter new name for the column"));
        if (newName === null || newName === "") {
         return;
       }
       if (columns.some(col => col.name === newName)) {
-        alert("A column with this name already exists");
+        alert(t("A column with this name already exists"));
         return;
       }      
       const updatedColumns = columns.map((column) =>
@@ -310,7 +313,7 @@ function Home() {
     // Sets the items to render
     // And sends data to backend for db data change
     function addComment(id: string) {
-      const newCommentText = prompt("Enter new comment");
+      const newCommentText = prompt(t("Enter new comment"));
       if (!newCommentText) return;
     
       const newComment: IComment = {

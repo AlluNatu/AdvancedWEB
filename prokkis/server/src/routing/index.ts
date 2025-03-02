@@ -16,12 +16,12 @@ dotenv.config();
 
 const router: Router = Router()
 
-
+// Gets data from frontend. Then finds the right user and notes
+// Then pushes data to the notes comment array and to database and sends res200 to frontend
 router.post('/api/addComment', validateToken, async(req: any, res: any) => {
     try {
         const user = req.user;
-        const foundUser = await users.findOne({ _id: user._id });
-        const noteFound = await Notes.findOne({ _id: req.body.id });        
+        const foundUser = await users.findOne({ _id: user._id });      
 
         let newComment: IComment = {
             text: req.body.comment,
@@ -52,12 +52,13 @@ router.post('/api/addComment', validateToken, async(req: any, res: any) => {
     }
 });
 
-
+// Gets data from frontend. Then finds the right user, column and notess
+// Updates the name of found column and then the statuses of all notes  under the given column
+// Then pushes data to database and sends res200 to frontend
 router.put('/api/changeName', validateToken, async (req: any, res: any) => {
     try {
         const user = req.user;
         const foundUser = await users.findOne({ _id: user._id });
-        const noteForOldStatus = await Notes.findOne({ _id: req.body.id });
           
         if (!user) {
             return res.status(401).json({ message: 'Access denied.' });
@@ -86,6 +87,10 @@ router.put('/api/changeName', validateToken, async (req: any, res: any) => {
 });
 
 
+// Gets data from frontend. Then finds the right user, old position, oldstatus and all notes.
+// Updates the status of the right note and puts it at the last position under the given column
+// Then pushes all of the old columns notes up by one position so they are not in the wrong places after update
+// Then pushes data to database and sends res200 to frontend
 router.put('/api/updateNoteStatus', validateToken, async (req: any, res: any) => {
     try {
         const user = req.user;
@@ -94,7 +99,6 @@ router.put('/api/updateNoteStatus', validateToken, async (req: any, res: any) =>
         const oldPosition = noteForOldStatus?.position
         const oldStatus = noteForOldStatus?.status;
         const foundNotes = await Notes.find({ userID: user._id, status: req.body.status });
-        const notesWithOldStatus = await Notes.find({ status: oldStatus, userID: user._id });
         
         if (!user) {
             return res.status(401).json({ message: 'Access denied.' });
@@ -124,7 +128,12 @@ router.put('/api/updateNoteStatus', validateToken, async (req: any, res: any) =>
     }
 });
 
-router.post("/api/register", upload.single("image"), //regValitor,
+// Gets data from frontend.
+// Checks if there is account on the same email already
+// If yes then status 403 if not then makes hash of password
+// Then takes the photo from frontend and gives it a filename and path
+// Then pushes data to database and sends res200 to frontend
+router.post("/api/register", upload.single("image"), regValitor,
     async (req: Request, res: Response) => {
         const errors: Result<ValidationError> = validationResult(req)
 
@@ -185,7 +194,13 @@ router.post("/api/register", upload.single("image"), //regValitor,
     }
 )
 
-router.post("/api/login", //logValidator,
+// Gets data from frontend
+// Then checks if email is the same
+// If not do not continue and sends 401
+// If yes then check if hash is good
+// If yes then send token to frontend
+// If no then error
+router.post("/api/login", logValidator,
     async (req: Request, res: Response) => {
         const errors: Result<ValidationError> = validationResult(req)
         
@@ -220,6 +235,10 @@ router.post("/api/login", //logValidator,
 
 })
 
+// Data from frontend
+// Finds correct user and notes for user
+// Then makes new note and pushesh it to database
+// Then sends res200 and the new note to frontend
 router.post('/api/addNote', validateToken, async (req:any, res:any) => {
     try {
         const user = req.user
@@ -259,6 +278,7 @@ router.post('/api/addNote', validateToken, async (req:any, res:any) => {
     }
 })
 
+// Same as addnote but column
 router.post('/api/addColumn', validateToken, async (req:any, res:any) => {
     try {
         const user = req.user
@@ -288,6 +308,8 @@ router.post('/api/addColumn', validateToken, async (req:any, res:any) => {
     }
 })
 
+// Gets all notes and columns for user
+// Then sends them to frontend
 router.get("/api/getNotesandColumns", validateToken, async (req: any, res: Response) => {
     try {
         const user = req.user
@@ -302,6 +324,9 @@ router.get("/api/getNotesandColumns", validateToken, async (req: any, res: Respo
       }
 })
 
+// This is called on the header
+// It calls for image that is on the user
+// If it finds an image for the correct user that is in the database it sends it the correct path where it is saved
 router.get("/api/getImage", validateToken, async (req: any, res: Response) => {
     try {
         console.log("CALLED");
@@ -332,6 +357,7 @@ router.get("/api/getImage", validateToken, async (req: any, res: Response) => {
       }
 })
 
+// Gets all notes
 router.get("/api/getNotes", validateToken, async (req: any, res: Response) => {
     try {
         const user = req.user
@@ -345,6 +371,9 @@ router.get("/api/getNotes", validateToken, async (req: any, res: Response) => {
       }
 })
 
+// Deletes note
+// Gets id of note to delete and then deletes
+// Sends message if deletet or if error
 router.delete('/api/noteDelete', async (req:Request, res:Response) => {
     try {
         console.log(req.body.id);
@@ -357,6 +386,7 @@ router.delete('/api/noteDelete', async (req:Request, res:Response) => {
     }
 })
 
+// Same as noteDelete but columns
 router.delete('/api/deleteColumn', validateToken, async (req:any, res:Response) => {
     try {
         console.log(req.body.id);
@@ -371,6 +401,10 @@ router.delete('/api/deleteColumn', validateToken, async (req:any, res:Response) 
     }
 })
 
+// This updates the id of note that is pressed also the new position and old position
+// Then finds the note to switch place by its position and status and the one that is pressed by its id
+// Sets the positions of each other to each other so they switch places
+// Saves data to database
 router.put('/api/updateNotePositionUp', validateToken, async (req:any, res:any) => {
     try {
         const user = req.user
@@ -384,8 +418,6 @@ router.put('/api/updateNotePositionUp', validateToken, async (req:any, res:any) 
 
         } else {
             if (foundUser){
-                //console.log(req.body.updatedItems);
-                
                 let noteUp = await Notes.updateOne({status: req.body.updatedItems[0].status, position:req.body.position}, { $set: { position: req.body.positionLast } })
                 let existingNote = await Notes.updateOne({_id: req.body.id}, { $set: { position: req.body.position } })
             }
@@ -398,6 +430,7 @@ router.put('/api/updateNotePositionUp', validateToken, async (req:any, res:any) 
     }
 })
 
+// Same as the one on top of this but in frontend stuff is the otherway around
 router.put('/api/updateNotePositionDown', validateToken, async (req:any, res:any) => {
     try {
         const user = req.user
@@ -424,14 +457,16 @@ router.put('/api/updateNotePositionDown', validateToken, async (req:any, res:any
     }
 })
 
+// This is only for cypress tests
+// This clears the whole database all the way
 router.post("/api/clearDatabase", async (req, res) => {
     try {
       await users.deleteMany({});
       await Columns.deleteMany({});
       await Notes.deleteMany({})
-      res.status(200).json({ success: true, message: "Database cleared!" });
+      res.status(200).json({ success: true, message: "Database cleared!" })
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to clear database" });
+      res.status(500).json({ success: false, message: "Failed to clear database" })
     }
   });
 

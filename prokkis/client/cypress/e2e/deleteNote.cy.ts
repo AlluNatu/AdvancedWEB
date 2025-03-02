@@ -28,7 +28,7 @@ describe('Makes account, then logs in and makes a column and checks that its the
         cy.get('input[id="content"]').type("testContent")
 
         cy.get('#demo-simple-select').click();
-        cy.get('li').contains('testColumn').click(); // Click on the specific option
+        cy.get('li').contains('testColumn').click();
         cy.get('button[type="submit"]').click();
 
         cy.contains('testNote').should('exist');

@@ -7,10 +7,10 @@
     "login": "Kirjaudu",
     "signup": "Luo käyttäjä",
     "Add": "Lisää", 
-    "Add new notw": "Lisää uusi muistio",
+    "Add new note": "Lisää uusi muistio",
     "Add note": "Lisää muistio",
     "Title": "Otsikko",
-    "Cotent": "Sisältö",
+    "Content": "Sisältö",
     "Status": "Tila",
     "To do": "Tehtävä",
     "In-Progress": "Kesken",
@@ -19,7 +19,17 @@
     "Log in": "Kirjaudu sisään",
     "Email": "Sähköposti",
     "Password": "Salsana",
-    "Don't have an account? Sign Up": "Ei löydy käyttäjää? Tee sellainen!"
-    
+    "Don't have an account? Sign Up": "Ei löydy käyttäjää? Tee sellainen!",
+    "A column with this name already exists": "Kolumni tällä nimellä löytyy jo",
+    "Cannot make a new note without column": "Ei voi tehdä uutta columnia tällä nimellä",
+    "Enter new name for the column": "Anna uusi nimi kolumnille",
+    "Enter new comment": "Anna uusi kommentti",
+    "No comments yet": "Ei kommentteja vielä",
+    "Comments:": "Kommentit:",
+    "Sign up!": "Rekisteröidy!",
+    "Upload files": "Lisää tiedostoja",
+    "Already have an account? Log in!": "Löytyy jo käyttäjä? Kirjaudu sisään!"
+
+
 
 }

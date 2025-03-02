@@ -3,8 +3,8 @@ import { body, validationResult } from "express-validator";
 const regValitor = [
   body("email")
     .trim()
-    .escape(),
-    //.isEmail(),
+    .escape()
+    .isEmail(),
   body("password")
     .isLength({ min: 8 })
     //.matches(/[A-Z]/)
@@ -16,8 +16,8 @@ const regValitor = [
 const logValidator = [
   body("email")
     .trim()
-    .escape(),
-    //.isEmail()
+    .escape()
+    .isEmail(),
   body("password")
     .notEmpty()
 ]
