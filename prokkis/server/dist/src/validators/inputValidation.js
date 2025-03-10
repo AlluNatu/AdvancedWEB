@@ -6,7 +6,7 @@ const regValitor = [
     (0, express_validator_1.body)("email")
         .trim()
         .escape(),
-    //.isEmail(),
+    // .isEmail(),
     (0, express_validator_1.body)("password")
     // .isLength({ min: 8 })
     //.matches(/[A-Z]/)
