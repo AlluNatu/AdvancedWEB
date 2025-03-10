@@ -1,413 +1,836 @@
-# CT30A2910 Introduction to Web Programming
+# CT30A3204 Advanced Web Applications
 
 This is repository for my course I completed in LUT University while doing my Bachelors Degree in Computer Science.
 
-This is for my course I did (LUT University) CT30A2910 Introduction to Web Programming. Which is worth 3 ECTS.
+This is for my course I did (LUT University) CT30A3204 Advanced Web Applications. Which is worth 6 ECTS.
 
 ## Learning objectives
 
 After completing the course, I am able to:
 
-    - Understand the programming concepts of the web 
-    - Know how to use HTML and CSS to build responsive web pages
-    - Create simple applications with JavaScript to run inside browsers
-    - Familiarize myself with responsive design and utilization of external APIs
+    1. Create web-based software products
+
+    2. Understand the evolution of web software and how it led to current online environment
+
+    3. Design and implement complex software systems using web-based software and APIs
+
+    4. Understand and solve issues related to web environment, such as authentication and security
+
+    5. Solve real world problems and design online web systems using requirements based on these problems
 
 ## Course content
-    - Web standards: HTTP, HTML, CSS and JavaScript
-    - The browser environment with its Document object model (DOM)
-    - Building web sites with commonly used tools.
+        ○ TypeScript
+
+        ○ Node.js
+
+        ○ Express
+
+        ○ Template engines
+
+        ○ MongoDB
+
+        ○ React
+
+        ○ Authentication and authorization
+
+        ○ APIs
 
 ## Grading
 
-I got graded with a grade 5, from my Universitys grading scale 1-5.
+I have not yet got a grade for this course. Will be updated as soon as I get one.
 
 
 # Assignment descriptions
 
 ## Week 1
-This week you are going to be familiarized in web programming and introducing yourself in HTML and JavaScript environments. You are also going to create a simple notebook application. 
+### Dog Wiki with Pictures  
 
-Note: If you do not want to use VSCode with the live server extension, you can install Node.js to your machine and run the website on a local server. Alternatively you can use CodeSandbox (not really recommended)
-### 1. Hello world! 
-Create an html file called index.html. This should be the main page for every week's exercises. Insert a h1 tag in the body of the document. The h1 tag should have the text “Hello world” inside.
+**Overview:**  
+Create a responsive info page about dog breeds using JavaScript and APIs. The page should dynamically generate breed entries, including images and descriptions.  
 
-### 2. Creating a button 
-Create a <button> tag with an id of "my-button". The button should print “hello world” to console when clicked. 
+**Requirements:**  
 
-Note: if you link an external JavaScript file, you should place the tag at the end of the body, or add a defer attribute to the <script> tag (<script src="foo/bar.js" defer></script>), in order to parse the entire document before running the script and referencing the DOM! Otherwise the script file could reference elements that the HTML parser hasn't parsed yet resulting in Null references!
+1. **JavaScript HTML Generator**  
+   - Generate at least five dog wiki items using JavaScript (`createElement`, `appendChild`).  
+   - Use the provided HTML template inside a `<div class="container">`.  
+   - Each wiki-text should contain 70-120 words.  
 
-### 3. Button DOM changes 
-Let’s add some real functionality to the button. In addition to printing “hello world” to the console, it should also change the text inside the h1 tag to “Moi maailma”. 
+2. **Dog Image API**  
+   - Fetch breed images from [Dog CEO API](https://dog.ceo/dog-api/).  
+   - Each item should have a breed name and a corresponding random image.  
 
-### 4. Unordered list 
-Add a ul tag and a button tag to the body of the document. The button should have an id of add-data and the list should have an id of my-list and the button should add an li element with text of your choice inside the ul tag. 
+3. **Mobile-First CSS**  
+   - Ensure a good layout on mobile devices.  
+   - Add `<meta name="viewport" content="width=device-width, initial-scale=1">`.  
+   - Set `.wiki-img` width to 100% and add margins, padding, and `box-shadow` for better spacing.  
 
-### 5. Custom text to list 
-Add a textarea tag to the document. Now, instead of some arbitrary text the button (same as in task 4) should add the text written  inside the textarea to the li tag. 
+4. **Media Queries (Desktop View)**  
+   - Apply a media query for screens `≥ 600px`.  
+   - Use `flex` and `row-reverse` to align text and images side by side.  
+   - Set `min-width` and `max-width` of `.wiki-text` and `.img-container` to 50%.  
+   - Wrap content in `.container`, set `max-width: 960px`, and center it with `margin: 0 auto`.  
+
+5. **Fetch Wiki Text from Wikipedia**  
+   - Use [Wikipedia API](https://en.wikipedia.org/api/rest_v1/) to fetch breed summaries.  
+
+**Resources:**  
+- [fetch() documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)  
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
+
 
 ## Week 2
+### **Introduction to TypeScript**  
 
-In this week you are going to create a user database table and a form that can be used to add entries to the table.
+Create a TypeScript console application covering Types, Interfaces, and Generics.  
 
-### 1. Creating a table
-Create an HTML table that contains the username and email text columns and one column that shows if the user is an admin or not depicted either by an X (admin) or - (not admin).
-Populate the table with at least 2 rows of data.
+🔹 **Before you start:** Install [Node.js](https://nodejs.org/) and configure TypeScript.  
+🔹 **Scoring:** 50% for correct functionality, 50% for proper TypeScript usage.  
 
-Example table:
+---
 
-    Username 	Email 	Admin
-    Webmaster 	example@email.com 	X
-    User123 	example@email.com 	-
-    AnotherUser222 	example@email.com 	-
+### **Requirements:**  
 
-### 2. Adding custom data to the table
+1️⃣ **Set Up TypeScript**  
+- Initialize TypeScript and modify `tsconfig.json`:  
+  ```json
+  {
+    "target": "ESNext",
+    "outDir": "./dist",
+    "noEmitOnError": true
+  }
+  ```  
+- Create `app.ts` that prints `"Hello World!"` when running:  
+  ```sh
+  tsc && node dist/app.js
+  ```  
 
-Create a form, in which the user can fill information that is going to be added into the table.
-The form should have the following input fields:
+2️⃣ **Define `TVehicle` Type**  
+- Create a `TVehicle` type with:  
+  ```ts
+  type TVehicle = { model: string; color: string; year: number; power: number };
+  ```  
+- Instantiate:  
+  ```ts
+  const vehicle: TVehicle = { model: "Boring generic vehicle", color: "Red", year: 1993, power: 60 };
+  console.log(vehicle);
+  ```  
 
-    Text input for username with an id of "input-username"
+3️⃣ **Extend Interface `IVehicle`**  
+- Create `IVehicle` interface (same as `TVehicle`).  
+- Extend into `ICar`, `IBoat`, and `IPlane` with additional attributes:  
+  ```ts
+  interface ICar extends IVehicle { bodyType: string; wheelCount: number; }
+  interface IBoat extends IVehicle { draft: number; }
+  interface IPlane extends IVehicle { wingspan: number; }
+  ```  
+- Instantiate and log:  
+  ```ts
+  const car: ICar = { model: "Ford Focus", color: "Green", year: 2016, power: 150, bodyType: "Hatchback", wheelCount: 4 };
+  const plane: IPlane = { model: "Boeing 777", color: "White", year: 2020, power: 170000, wingspan: 65 };
+  const boat: IBoat = { model: "Bella", color: "Black", year: 2022, power: 100, draft: 0.42 };
+  console.log(car, plane, boat);
+  ```  
 
-    Text input for email with an id of "input-email"
+4️⃣ **Generic `VehicleService` Class**  
+- Create a generic class for storing vehicles:  
+  ```ts
+  class VehicleService<T> {
+    private items: T[] = [];
+    add(item: T) { this.items.push(item); }
+    list() { return this.items; }
+  }
+  ```  
+- Use it for `cars` and `boats`:  
+  ```ts
+  const cars = new VehicleService<ICar>();
+  const boats = new VehicleService<IBoat>();
 
-    Checkbox for the admin status with an id of "input-admin"
+  cars.add(car);
+  boats.add(boat);
 
-    Button for submitting data with an id of "submit-data"
+  console.log(cars.list(), boats.list());
+  ```  
 
-When the "submit-data" button is pressed, the data in the form should be appended to the table.
+---
 
-Note! If you use the <form> element, make sure to add the event.preventDefault() to prevent the site from refreshing.
+### **Resources:**  
+- [TypeScript Tooling in 5 Minutes](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html)  
+- [TypeScript Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)  
+- [TypeScript Classes](https://www.typescriptlang.org/docs/handbook/classes.html)  
+- [TypeScript Generics](https://www.typescriptlang.org/docs/handbook/generics.html)
 
-
-### 3. Emptying the table
-
-Create a button with an id of "empty-table" that empties the table when clicked.
-
-
-### 4. Editing existing data
-
-Edit the form logic so that if the username in the form already exists in the table, instead of adding the form data to the table, the data for that row is edited instead.
-
-
-### 5. Adding images
-
-The user should be able to add an image for the user. Add a file input to the form with an id of "input-image" and implement the ability to “upload” the file and display it in the fourth column of the table. The image should have the following properties:
-
-    Width: 64 pixels
-    Height: 64 pixels
-
-
-Useful reading
-
-event.preventDefault()
-URL.createObjectURL()
 
 ## Week 3
+### **First Express Server**  
 
-This week you are going to get familiarized with fetching data from an API and styling a webpage with CSS. This week’s goal is to make a table that shows population data from different municipalities. 
+Create an Express.js server that handles basic GET/POST requests and serves a simple webpage.  
 
-### 1. Creating the table
+🔹 **Tip:** Use `tsc-watch` and `nodemon` for easier testing:  
+```json
+"start": "tsc-watch --onSuccess \"nodemon dist/app.js\""
+```  
 
-Create a table element and add thead element and a tbody element to it. The thead element should have 2 th elements: municipality and population. The tbody should be populated with data fetched from https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff (the data should be fetched upon page load)
+---
 
-    The municipalities can be found in dataset.dimension.Alue.category.label
-    The values can be found in dataset.value
+### **Requirements:**  
 
+1️⃣ **Hello World Route**  
+- Create an Express.js server on port `3000`.  
+- Add a GET route to `/hello` that responds with:  
+  ```json
+  { "msg": "Hello world!" }
+  ```  
+- **Testing:** Use Postman or UseBruno.  
 
-### 2. Styling the table
+2️⃣ **ID Echoing**  
+- Add a GET route to `/echo/:id` that returns:  
+  ```json
+  { "id": "your-id-here" }
+  ```  
+- Example: `GET /echo/dog` → `{ "id": "dog" }`  
 
-With plain HTML the table looks frankly horrible. Let’s add some styling to make it more tolerable. To make the table look a little better add the following styling: 
+3️⃣ **POST Request: Sum of Numbers**  
+- Add a POST route to `/sum` that takes an array of numbers from the request body and returns their sum.  
+  **Example Request:**  
+  ```json
+  { "numbers": [1, 2, 3] }
+  ```  
+  **Response:**  
+  ```json
+  { "sum": 6 }
+  ```  
+- **Tip:** Use `express.json()` to handle JSON requests.  
 
-    The page body should have the font-family “Verdana, Arial, sans-serif” 
+4️⃣ **Front-End & Back-End Communication**  
+- Add a `public/` folder with `index.html` and `main.js`.  
+- Inside `index.html`, create a form (`id="userForm"`) with name & email input fields (`id="name"`, `id="email"`).  
+- In `main.js`, send a POST request to `/users` on form submission with:  
+  ```json
+  { "name": "John Doe", "email": "john@example.com" }
+  ```  
+- **Back-End:**  
+  - Serve static files (`../public`).  
+  - Create `TUser` type with `name` and `email`.  
+  - Store users in an array and append new users via POST `/users`.  
+  - Respond with `{ "msg": "User successfully added" }`.  
 
-The table data cells (td elements) should have the following styling: 
+5️⃣ **Render All Users in Front-End**  
+- Add a GET route `/users` that returns the user list with `201` status.  
+- In `index.html`, add:  
+  - Button (`id="getUsers"`)  
+  - Unordered list (`id="userList"`)  
+- In `main.js`, when the button is clicked, fetch users and display them as:  
+  ```
+  John Doe - john@example.com
+  ```  
 
-    Padding of 6px 
+---
 
-    1 pixel wide solid gray bottom border 
-
-The table header (th elements) should be adjusted as well to make it stand out better. 
-The table header should have: 
-
-    Background color “#b7d0ff” 
-
-    Bold font 
-
-    Padding of “12px 0px 12px 6px” 
-
-    Border-bottom of “2px solid gray” 
-
-And finally, the table:
-
-    The table should have the property “border-collapse” set to “collapse” 
-
-    The table should have the font size of 16px and the text should be aligned left 
-
-### 3. Additional styling
-
-Currently, the table is too narrow. Let’s center it and expand it. Create a div and give it “center” class. Put the table inside it. In addition to the table, create a h1 tag that should contain a header for the table, for example "Municipality employment statistics in Finland". The “center” class should have the following styling: 
-
-    Margin should be set to “auto” 
-
-    Padding should be 60px 
-
-    Width should be set to 60% 
-
-The table should also get adjusted:
-
-    The table should have the “table-layout” set to “fixed” 
-
-    The table should have its width set to 100%
-
-The text for the h1 tag should also be centered.
-
-Also, the even table rows should have the background color of “#f2f2f2”. Other rows (except for the header) should have a background color of "#ffffff"
-
-### 4. Additional data
-
-Let’s add more data to the table. Add one extra column to the table header called “Employment amount” and populate the column with data from https://statfin.stat.fi/PxWeb/sq/5e288b40-f8c8-4f1e-b3b0-61b86ce5c065 
-
-## 5. Conditional styling
-
-    Add one extra column to the table called “Employment-%”. Calculate the percentage of employment by municipality, rounded to two decimals. 
-    The rows (tr element) with over 45% employment should have a background color of “#abffbd” 
-    The rows (tr element) with under 25% employment should have a background color of “#ff9e9e”
-
-Useful reading
-
-fetch()
-
-Response.json()
-
-Object.values()
+### **Resources:**  
+- [Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)  
+- [Express Route Parameters](https://expressjs.com/en/guide/routing.html)  
 
 ## Week 4
+### **📌 Overview**  
+- Create an **Express server** to handle todos.  
+- Store data in a **JSON file (data.json)** instead of runtime memory.  
+- Implement **CRUD operations** (Create, Read, Update, Delete).  
+- Use **forms** to interact with the server.  
 
-This week you are going to make a simple TV-show viewer app that looks good on a desktop and mobile environment. You are also going to get yourself familiarized with URL query parameters. 
-### 1. Fetching data
-Create a form with a text input field with an id of "input-show" and a button with an id of "submit-data" and a div with a class of "show-container".
-Using the form, fetch data from https://api.tvmaze.com/search/shows?q= where the value of the input field is set to the query parameter q (for example, when searching for "friends" the url would look like https://api.tvmaze.com/search/shows?q=friends). The API returns an array of shows that match the search parameter.
-From the data, create show-data elements and add them to the child of the "show-container" div. An example of a show-data element is shown below. The container must not contain any previous search results.
+---
 
-    <div class="show-data"> 
-        <img src="[show image medium]"> 
-        <div class="show-info"> 
-            <h1>[Show title]</h1> 
-            <p>[Show summary]</p> 
-        </div> 
-    </div> 
+### **🚀 Requirements:**  
 
-Generate the template in JavaScript, one for each show. Don't copy-paste it into the HTML.
+### **1️⃣ Save Users & Todos**  
+✅ **Front-End:**  
+- Add a form (`id="todoForm"`) with:  
+  - Name input (`id="userInput"`)  
+  - Todo input (`id="todoInput"`)  
+  - Submit button (`id="submit-data"`)  
+- On button click, send a **POST** request to `/add`.  
 
-(Note that the API gives the summary already wrapped in <p> tags) 
+✅ **Back-End:**  
+- Create `TUser` type:  
+  ```ts
+  type TUser = {
+    name: string;
+    todos: string[];
+  };
+  ```  
+- Store users as an **array of TUser** in `data.json`.  
+- If a user already exists, append the new todo instead of creating a new entry.  
+- Respond with:  
+  ```json
+  { "msg": "Todo added successfully for user John." }
+  ```  
+- Display the message on the webpage.  
 
-### 2. Desktop environment styling
-Let’s add some styling to the webpage to make it look acceptable on a desktop environment. Add the following tag to the head of the document: <meta name="viewport" content="width=device-width, initial-scale=1.0"> to let the browser know how to set the page’s dimensions and scaling. 
+---
 
-The document body should have: 
+### **2️⃣ Fetch Users & Display Todos**  
+✅ **Front-End:**  
+- Add a search form (`id="searchForm"`) with:  
+  - Input (`id="searchInput"`)  
+  - Button (`id="search"`)  
+- On button click, send a **GET** request to `/todos/:id` (e.g., `/todos/jukka`).  
 
-    Background color “#eceff1” 
+✅ **Back-End:**  
+- If the user exists, return their todos.  
+- If not, return `{ "msg": "User not found" }`.  
+- Display todos as an unordered list `<ul id="todoList">`.  
 
-The show-container class should have:
+---
 
-    Padding-left of 10px
-    Padding-right of 10px
+### **3️⃣ Delete Users**  
+✅ **Front-End:**  
+- When a user is found, show a **"Delete User"** button (`id="deleteUser"`).  
+- On button click, send a **DELETE** request to `/delete` with the user’s name.  
 
-Additionally, the class show-data should have the following style properties: 
+✅ **Back-End:**  
+- Remove the user from `data.json`.  
+- Return `{ "msg": "User deleted successfully." }`.  
+- Remove the user from the webpage.  
 
-    Width should be set to 100% 
+---
 
-    Background color of “#cfd8dc” 
+### **4️⃣ Delete Single Todos**  
+✅ **Front-End:**  
+- Make todos **clickable** (`<a class="delete-task">`).  
+- Clicking a todo sends a **PUT** request to `/update`.  
 
-    Margin-top of 10px
+✅ **Back-End:**  
+- Remove the clicked todo from the user’s list in `data.json`.  
+- Return `{ "msg": "Todo deleted successfully." }`.  
+- Update the UI dynamically.  
 
-    Margin-bottom of 10px
+---
 
-    Padding of 10px 
+### **5️⃣ Store Data in File System (`data.json`)**  
+✅ **Back-End:**  
+- Save all data in `data.json`.  
+- On server start:  
+  - **Check if `data.json` exists**. If not, create it.  
+  - **Load existing data** into memory.  
+- **Write to file** every time data changes.  
 
-    Border radius of 6px 
+🔹 **Hint:** Use `fsPromises` for async file operations:  
+```ts
+import { promises as fs } from 'fs';
 
-    Box shadow to make it look like the elements are floating on the page. Box shadow can look whatever you think is best 
+async function readData() {
+    try {
+        const data = await fs.readFile('data.json', 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        return [];
+    }
+}
 
-    The h1 element in this class should have its text centered 
+async function writeData(data: TUser[]) {
+    await fs.writeFile('data.json', JSON.stringify(data, null, 2));
+}
+```
+- Use `readData()` to **fetch users**.  
+- Use `writeData()` to **update `data.json`** after adding/deleting todos.  
 
-    The image should have display set to block
+---
 
-Show-info class should have the following properties: 
+### **🎯 Final Features Recap:**  
+✅ **Add a user & todo** (`POST /add`)  
+✅ **Fetch user’s todos** (`GET /todos/:id`)  
+✅ **Delete user** (`DELETE /delete`)  
+✅ **Delete single todo** (`PUT /update`)  
+✅ **Store data persistently in `data.json`**  
 
-    Width should be 100% 
+---
 
-Additionally, using CSS media queries, set the following properties to devices over 800px wide: 
-
-    Show-data class should have its display set to flex 
-
-    Show-info should have a padding of 10px 
-
- 
-### 3. Mobile environment styling
-Currently, the webpage looks ok on PC but on a mobile environment the webpage looks less-than-ideal. We can fix this by using CSS media queries. Devices less than 800px wide should have the following properties:
-
-    The img element should have “margin: auto” 
-
-    The p element inside show-info should have its text centered and a padding of 10px 
-
-
-### 4. Web fonts
-
-Add the font “Roboto” to your webpage. https://fonts.google.com/selection?selection.family=Roboto. Press the "Get embedded code" to get the import URLs. Make sure to add the CSS rule provided in the website as well.
-
-(Note. You have to import the font via HTML. Otherwise CodeGrade doesn't recognize it.)
-
-### 5. Bootstrap
-
-Add Bootstrap front-end framework to your website: https://getbootstrap.com/docs/5.2/getting-started/download/#cdn-via-jsdelivr use the hosted version. Add a Bootstrap navbar to your app and move the search form inside of it.
-
-
-Useful reading
-
-Media queries
-Bootstrap navbar
-
-
+### **📚 Useful Resources:**  
+- [Express File System (fs)](https://nodejs.org/api/fs.html)  
+- [fsPromises API](https://nodejs.org/api/fs.html#fs_fspromises_readfile_path_options)  
 
 
 ## Week 5
 
-This week you’re going to get familiarized in a JavaScript framework called Leaflet. The goal of this week is to make an interactive map that shows every municipality in Finland and some data from each one of them.
+### **Todos to Database**  
+Replace the file system with MongoDB.  
 
+#### **1. Save todos to database**  
+- Connect MongoDB (`mongodb://127.0.0.1:27017/testdb`).  
+- Create a `models` directory under `src`.  
+- Define `User` model with `name` (string) and `todos` (array of `{ todo: string }`).  
+- Use `/add` route to add todos, ensuring users are stored properly.  
 
-### 1. Creating the map
+#### **2. Get todos from database**  
+- Modify `/todos/:id` to fetch a user’s todos from MongoDB.  
+- Display the todos in a list on the front-end.  
 
-Add Leaflet library to your project: https://leafletjs.com/download.html Use the “Using a Hosted Version of Leaflet” version 1.9.4.
+#### **3. Delete todos from database**  
+- Modify `/update` route to delete a selected todo from the database.  
 
-Fetch GeoJSON data from https://geo.stat.fi/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeName=tilastointialueet:kunta4500k&outputFormat=json&srsName=EPSG:4326 
+#### **4. Update todos**  
+- Add a `checked` (boolean, default `false`) field to the `Todo` schema.  
+- Create a PUT `/updateTodo` route to toggle `checked` status.  
+- Add checkboxes (`id="myCheckbox"`, `class="checkBoxes"`) to update status instantly.  
 
-Create a leaflet map to a div with an id of “map”. The map should have the following attributes to display the data properly: 
+#### **5. Additional styling**  
+- Use **Materialize CSS** via CDN.  
+- Wrap content inside a `.container` div with two `.col` divs.  
+- Style buttons (`.btn`).  
+- Add a **Materialize Navbar** above the container.  
+- Modify list items:  
+  - Wrap `<li>` in `<label>`  
+  - Add a checkbox inside `<label>`  
+  - Include a `<span>` with an `<a>` for deleting todos.  
 
-    minZoom: -3
+#### **Useful Links**  
+- [MongoDB Compass](https://www.mongodb.com/products/tools/compass)  
+- [Materialize Navbar](https://materializecss.com/)  
+- [Mongoose Docs](https://mongoosejs.com/)  
 
-The data should be displayed in GeoJSON format. The GeoJSON layer should have the following attributes: 
-
-    weight: 2
-
-The map must also be fitted to the GeoJSON data. This can be done with map.fitBounds(). The bounds can be gotten from the GeoJSON layer with getBounds()
-
-Set the map's height to "97vh" from the CSS file. Make sure you do not have any other CSS rules.
-
-
-### 2. Basic functionality
-
-Add some functionality to the map. The map should show the name of the municipality when hovering over one as a leaflet tooltip. 
-
-
-### 3. Background map
-
-The map looks dull without a background image. Add OpenStreetMap background to the map: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png  (Note that you have to add the © OpenStreetMap attribution to the layer as per the copyright notice of Openstreetmap). 
-
-
-### 4. Advanced functionality
-
-Fetch positive migration data from https://statfin.stat.fi/PxWeb/sq/4bb2c735-1dc3-4c5e-bde7-2165df85e65f and negative migration data from https://statfin.stat.fi/PxWeb/sq/944493ca-ea4d-4fd9-a75c-4975192f7b6e . In addition to the name of the municipality, the map should show positive and negative migration of a municipality upon clicking it as a leaflet popup. 
-
-### 5. Conditional map styling
-
-With leaflet one can color individual polygons using the style attribute of the GeoJSON layer. Using this attribute, we can color each municipality according to the net migration of that municipality.  
-
-The color of a municipality can be easily colored using a Hue, saturation, lightness (HSL) color value. The color should be calculated as follows:
-
-    color: hsl(hue, 75%, 50%) 
-
-Where hue is calculated as follows: 
-
-    (positive migration / negative migration)3 * 60 and it must be no greater than 120 
-
-(Remember that you can pass functions as arguments in JavaScript!)
 
 ## Week 6
+### **Week 6 - Tasks Summary**  
 
-This week you are going to learn JSON POST requests and get familiarized with Frappe-chart JavaScript library. The goal of this week is to make a website that shows the population growth in a municipality in Finland.
+#### **1. Frontpage with Inputs**  
+- Create a frontend form (`id="offerForm"`) for selling items.  
+- Form inputs: `title` (id="title"), `price` (id="price"), `description` (id="description"), and `image` (id="image", type="file").  
+- Labels for all inputs (except file) and a submit button.  
+- Backend: Create `/upload` POST route to save offers (title, description, price) in the `offers` collection.  
 
-### 1. Fetching data with POST
+#### **2. Image Uploading to Database**  
+- Create `Image.ts` model (`filename`, `path`, `_id`).  
+- Modify `Offer.ts` to include `imageId` (string).  
+- Use **Multer** to handle image uploads to `./public/images`.  
+- Generate filenames as `originalName_uuid.extension` (use `uuid v4`).  
+- Save image info in the `images` collection and store its `_id` in `imageId` of the corresponding offer.  
+- Offers should work with or without images.  
 
-Create a post request to https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px upon page load and get the population data from the whole country. This data doesn’t have to be displayed anywhere yet. 
+#### **3. Fetch & Display Offers on Frontpage**  
+- Create `/offers` GET route to return all offers with their images.  
+- Frontend:  
+  - Add a div (`id="offersContainer"`) to display offers.  
+  - Each offer should be inside a div (`class="offerDiv"`).  
+  - Include an image and `<p>` elements for title, description, and price.  
+  - Offers should update dynamically on page load and after a new upload.  
 
-The request body consists of an array of objects. 
+#### **4. Styling with Materialize CSS**  
+- Wrap everything in a `.container` div.  
+- **Form styling:**  
+  - `class="card-panel"`  
+  - Inputs inside `div.input-field`  
+  - Description textarea: `class="materialize-textarea"`  
+  - File upload inside `div.file-field` → nested `btn` (upload text + file input) & `file-path-wrapper`.  
+  - Submit button: `class="btn waver-effect waves-light"`.  
+- **Offer display:**  
+  - Each `offerDiv`: `class="col s12 m6 l4"`.  
+  - Inside it:  
+    - `card hoverable` div  
+    - `card-image` div with `img.responsive-img`  
+    - `card-title` span for the title  
+    - `card-content` div for price & description  
 
-    The first object (“Vuosi”) determines which years the data will be get from. We want to select the years 2000-2021. (You don’t have to worry about this) 
-    The second object (“Alue”) determines in which area the data is get from. The API requires the area to be in a municipality code form. The code for the whole country is “SSS”. 
-    The third object (“Tiedot”) determines which data we want from the API. The code to get population data is “vaesto”. (You only have to worry about this in task 5) 
+#### **Useful Links**  
+- [TypeScript Docs](https://www.typescriptlang.org/)  
+- [UUID](https://www.npmjs.com/package/uuid)  
+- [Multer](https://www.npmjs.com/package/multer)  
 
-An example POST request to get population data from the whole country:
-
-    {<br>    "query": [<br>        {<br>            "code": "Vuosi",<br>            "selection": {<br>                "filter": "item",<br>                "values": [<br>                    "2000",<br>                    "2001",<br>                    "2002",<br>                    "2003",<br>                    "2004",<br>                    "2005",<br>                    "2006",<br>                    "2007",<br>                    "2008",<br>                    "2009",<br>                    "2010",<br>                    "2011",<br>                    "2012",<br>                    "2013",<br>                    "2014",<br>                    "2015",<br>                    "2016",<br>                    "2017",<br>                    "2018",<br>                    "2019",<br>                    "2020",<br>                    "2021"<br>                ]<br>            }
-            },
-            {<br>            "code": "Alue",<br>            "selection": {<br>                "filter": "item",<br>                "values": [<br>                    "SSS"<br>                ]<br>            }
-            },
-            {<br>            "code": "Tiedot",<br>            "selection": {<br>                "filter": "item",<br>                "values": [<br>                    "vaesto"<br>                ]<br>            }
-            }
-        ],
-        "response": {<br>        "format": "json-stat2"<br>    }
-    }
-
-Don't forget to set the content-type header to application/json!
-
-### 2. Adding data to chart
-
-Import the Frappe-chart.js library to your project. Use the "include it directly in your HTML" version. Use the version provided by unpkg ("https://unpkg.com/frappe-charts@latest")
-
-After importing the library, add a div with the id “chart”. Map the fetched data on this chart. 
-
-The chart should have the correct styling:
-
-    It should be 450 high
-    It should be of “line” type
-    The line should have the color '#eb5146'
-    The chart labels on the x axis should be the years ranging from 2000 to 2021
-    The chart should have  title. 
-
- 
-### 3. Editing POST request body
-
-Currently, the website only fetches the data from the whole country. To make the website a little more interesting, add a form that has an input field with an id of "input-area", where the user can type a municipality and a button with an id of "submit-data". After clicking the button the website tries to fetch the data of that municipality and put it to the chart. The search function should be case insensitive.
-
-You have to edit the second object (Alue) of the JSON post body. The Alue field accepts only the area codes, not area names. You can get the municipality codes from https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px with a simple GET request (They are in the second object; the first array is the codes, and the second array is the area names).
- 4. Simple data prediction
-
-Let’s add some data predictions to the population chart. Add a button with the id of “add-data”. This button should add a data point to the chart using the following formula: 
-
-    Calculate the mean value of the delta of every data point 
-    Add the mean value to the last data point. 
-
-For example, with the values of [5, 2, 4, -1] the next data point would be: ((2−5)+(4−2)+((−1)−4))/3+(−1)=(2−3−5)/3−1=(−6)/3−1=−3=> [5, 2, 4, -1, -3]
-
-### 5. Fetching additional data
-
-The API provides additional data that we can utilize. Add means of navigation (for example, <a> tag or a button) with an id of “navigation” that navigates to /newchart.html. This page should contain a bar type chart which shows the births and deaths of the same municipality as the main page as well as means of navigation (for example, <a> tag or a button) with an id of “navigation” that navigates to /index.html.
-
-Now you have to edit the third object of the post body (“Tiedot”) in order to get the data you want. The code to get birth data is “vm01” and the code to get death data is “vm11”. Fetch the birth and death data separately.
-
-Map the birth and death data into the chart. 
-
-Like in the first task, the chart should have the correct styling.
-
-    It should be 450 high
-    It should be of “bar” type.
-    The birth data bars should have the color '#63d0ff'
-    The death bars should have the color '#363636'.
-    The chart labels on the x axis should be the years ranging from 2000 to 2021. 
-    The chart should have a title
 
 ## Week 7
+### **Session Authentication - Project Summary**  
 
-This week your task is to develop a game with Phaser. You can create the game of your taste. Platformer, tank shooting, Angry birds stylish...
+#### **1. User Registration**  
+- Web app runs on **port 3000**.  
+- **POST** `/api/user/register`:  
+  - Accepts `{ email, password }` in JSON.  
+  - Hash password using **bcrypt.js**.  
+  - Store users in a list.  
+  - Prevent duplicate emails (return **403** if email exists).  
+  - Respond with the created user (email + hashed password).  
+- **GET** `/api/user/list`: Returns a list of all registered users.  
 
-### 1. Create a simple game (1 point)
+#### **2. User Login with JWT**  
+- **POST** `/api/user/login`:  
+  - Validates credentials and returns a **JWT token**.  
+  - Use **jsonwebtoken** to generate the token.  
+  - Token payload should include `{ email }`.  
+  - Store **SECRET** key in **environment variable** (`.env`).  
+  - Token returned as JSON `{ token: "jwt_token_here" }`.  
 
-Follow for example the lecture video and build a game where player can move around.
+#### **3. Registration & Login Pages**  
+- **Register Page (`register.html`)**  
+  - Form (`id="registerForm"`) with **email** & **password** inputs.  
+  - On success, redirect to `/login.html`.  
+- **Login Page (`login.html`)**  
+  - Form (`id="loginForm"`) with same input IDs.  
+  - On success, store **JWT token** in **localStorage** (`"token"`) and redirect to `/index.html`.  
 
-### 2. Add other moving parts (3 points)
+#### **4. Protected Route (`/api/private`)**  
+- Middleware **validates token** from the request **Authorization header** (`Bearer token`).  
+- **GET** `/api/private`:  
+  - If authenticated, return `{ message: "This is protected secure route!" }` (status **200**).  
+  - If unauthorized, return status **401**.  
+- **Redirect logic in `index.html`**:  
+  - If no token → redirect to `/login.html`.  
+  - If token exists → fetch `/api/private` to verify authentication.  
 
-Add enemies, collectible items or any other things player can interact. It is required to have something more than in the lecture demo. You can for example have different kind of items to collect (some give more points than others – with different colors).
-### 3. Communication with other parts (5 points)
+#### **5. Logout Functionality**  
+- In **`index.html`**, add a **logout button** (`id="logout"`).  
+- Clicking **removes token from `localStorage`** and redirects to `/login.html`.  
 
-Add something the player can "communicate" with. This means shooting, catching (collecting stars is NOT enough) running parts or something like that.
+#### **Useful Links**  
+- [bcrypt](https://www.npmjs.com/package/bcrypt)  
+- [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)  
+
+
+## Week 8
+### **Week 8: Authentication & Role-Based Access Control (RBAC) for a Forum Application**
+
+#### **1. User Registration and Login**
+- **POST** `/api/user/register/`:  
+  - Create a user with email, username, password, and an optional `isAdmin` field.  
+  - **Password hashing**: Use **bcrypt.js** to hash passwords.  
+  - **Email uniqueness**: Check for duplicate emails before creating a user.  
+  - **Response**: On successful registration, return the created user as JSON.  
+  - If email is already used, return **403 Forbidden**.  
+  - User model (`User.js`), schema should include:  
+    - `email (string)`
+    - `password (string)`
+    - `username (string)`
+    - `isAdmin (boolean)`  
+
+- **POST** `/api/user/login`:  
+  - Validate user credentials and return a **JWT**.  
+  - **JWT Payload**: `_id`, `username`, `isAdmin`.  
+  - If user doesn't exist, return **404 Not Found**.  
+  - If password is incorrect, return **401 Unauthorized**.  
+
+- **Environment variable**: Use **SECRET** for JWT key. 
+
+#### **2. Input Validation**
+- **Validation**: Use **express-validator** to sanitize and validate inputs.  
+  - **Username**: Trim and escape input. Min length: 3, Max length: 25 characters.  
+  - **Email**: Trim, escape, and validate proper email format.  
+  - **Password**: Ensure strong password with the following rules:  
+    - Min 8 characters  
+    - At least 1 uppercase letter  
+    - At least 1 lowercase letter  
+    - At least 1 number  
+    - At least 1 special character (`#!&?`)
+  - If any validation fails, return **400 Bad Request**.
+
+#### **3. Server-side Routing and Topics**
+- **Topic Model** (`Topic.js`):
+  - **Schema**: `title (string)`, `content (string)`, `username (string)`, `createdAt (Date)` (auto-generated).
+
+- **Middleware** (`validateToken.js`):
+  - **For authenticated users**: Check for valid JWT token, return **401 Unauthorized** if not found.  
+  - **For admin users**: Check `isAdmin` attribute, return **403 Forbidden** if not admin.
+
+- **Routes**:
+  - **GET** `/api/topics`: Return a list of all topics from the database.  
+  - **POST** `/api/topic`: Create a new topic. Requires authentication (JWT).  
+  - **DELETE** `/api/topic/:id`: Admin only route to delete a topic by ID. If successful, return **200 OK** with message `"Topic deleted successfully."`.
+
+#### **4. Frontend Implementation**
+- **`register.html`**:
+  - Form with inputs for `email`, `username`, `password`, and `isAdmin` (checkbox).
+  - **Submit**: Send a **POST** request to `/api/user/register/`. On success, redirect to **index.html**.
+
+- **`index.html`**:
+  - **Navbar**: Include a login form (email and password) and a redirect button to the registration page.
+  - **Topic Form** (`topicForm`):  
+    - Input fields: `topicTitle` and `topicText`.  
+    - Button: `postTopic`. Send **POST** request to create a new topic.
+  - **Display Topics**:  
+    - For each topic, show:
+      - Title  
+      - Content  
+      - Created by (username)  
+      - Created at timestamp.  
+      - **Delete button** (only visible to admin users).  
+  - **Fetch Topics** on page load using **GET** request to `/api/topics`.
+
+  **Event listeners**:
+  - **Register Form**: Trigger `submit` event to handle the POST request.  
+  - **Login Form**: Trigger `submit` event and store **JWT token** in **localStorage** upon successful login.  
+  - **Topic Form**: Trigger `submit` event to send topic data to the backend.  
+  - **Delete Button**: Send **DELETE** request for topics that the admin can delete.
+
+#### **5. MaterializeCSS Styling**
+- **Navbar**:  
+  - Use **MaterializeCSS** styles to create a responsive, attractive navbar with login form and registration redirect button.  
+  - Ensure **login form** is inside a `<form>` with **class row** and each input is inside `div` with classes `input-field col` and `navbar-input`.
+
+- **Topic Form**:  
+  - **Materialize** class for `textarea` (e.g., `materialize-textarea`) and button (e.g., `btn waves-effect waves-light`).  
+
+- **Topic Cards**:  
+  - Use Materialize card layout with classes: `card`, `z-depth-2`, `hoverable`, `grey lighten-2`.  
+  - Inside the card: 
+    - `card-content` for title, content, and timestamp.  
+    - `card-action` for the delete button.
+
+- **Responsive Design**:  
+  - Make sure the design is responsive and works well across different devices.
+
+#### **Useful Links**:
+- [bcrypt](https://www.npmjs.com/package/bcrypt)  
+- [express-validator](https://express-validator.github.io/docs/)  
+- [MaterializeCSS](https://materializecss.com/)  
+- [JWT](https://www.npmjs.com/package/jsonwebtoken)  
+
+## Week 9
+
+**Assignment: Introduction to React**
+
+This week, we'll explore React basics. Keep the [React documentation](https://reactjs.org/docs/getting-started.html) handy! All examples use React functions, not classes.
+
+### General Notes:
+- For CodeGrade tests, modify your `package.json` and `tsconfig.app.json` as follows:
+  - In `package.json` under `"scripts"`: Add `"test": "jest"`.
+  - In `tsconfig.app.json` under `compilerOptions`: Add `"jsx": "react-jsx"` and `"esModuleInterop": true`.
+  - Outside `compilerOptions`: Add `include` and `exclude` paths.
+
+### Tasks and Requirements:
+
+1. **Create Vite React App:**
+   - Initialize with Vite and TypeScript.
+   - Create a `<div className="App">` with an `<h1>` element containing "Hello World!".
+
+2. **Optional Local Testing:**
+   - Download test zip from the provided link.
+   - Create a `__test__` directory inside `src` and copy the zip contents.
+   - To run tests: `npm run test`.
+   - Add necessary dependencies for testing.
+
+3. **Create Components:**
+   - Create `MyContainer.tsx` and `MyList.tsx` inside a `components` folder in `src`.
+   - Nest components: `App.tsx` includes `MyContainer.tsx`; `MyContainer.tsx` includes `MyList.tsx`.
+
+4. **Props, Lists, and Keys:**
+   - `MyList.tsx` should accept `header` and `items` props.
+   - Define types: `Item` (with `id` and `text` attributes), and `ListProps` (with `header` and `items` attributes).
+   - Render items as `<li>` elements inside an ordered list using `id` as key.
+
+5. **Component States:**
+   - Manage `items` state in `MyContainer` and pass it to `MyList`.
+   - Add a `<textarea>` and `<button>` in `MyContainer` to append new items to the state.
+
+6. **Conditional Rendering:**
+   - Style clicked `<li>` items with `text-decoration: "line-through"`.
+   - Use `updateList()` function in `ListProps` to manage state.
+
+### Useful Links:
+- [Vite](https://vitejs.dev/)
+- [Creating and Using React Components](https://www.w3schools.com/react/react_components.asp)
+- [useState](https://reactjs.org/docs/hooks-state.html)
+- [Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
+- [Functions as Props](https://reactjs.org/docs/faq-functions.html)
+
+## Week 10
+
+**Assignment: Advanced React Features**
+
+This week we'll dive into advanced React features like `useEffect`, and third-party packages such as `react-router-dom`, `react-i18next`, and simple pagination. Tasks 1, 2, 4, and 5 have tests provided.
+
+### General Notes:
+- For task 3 to pass CodeGrade, change the start script from "dev" to "start" and configure port 3000 in `vite.config.ts`.
+- Follow Week 9 instructions for other configurations.
+
+### Tasks and Requirements:
+
+1. **React Router:**
+   - Create a new Vite project with three components: `<About>`, `<MyContainer>`, and `<Header>` in `/src/components`.
+   - Install React Router: `npm install react-router-dom`.
+   - Set up routes: '/' renders `<MyContainer>`, '/about' renders `<About>`, both routes render `<Header>`.
+   - Create a navbar in `<Header>` with links to "Home" and "About" pages. Add buttons for "FI" and "EN" for language change.
+
+2. **useEffect:**
+   - Fetch data from the provided API in `<About>` using `useEffect`.
+   - Display each item's title and body inside a div with the item id as key.
+   - Install dependencies for task 3: `npm i react-i18next i18next i18next-http-backend i18next-browser-languagedetector`.
+
+3. **Internationalization (i18n):**
+   - Add support for multiple languages using `react-i18next`.
+   - Set default language to English with support for Finnish.
+   - Add buttons in `<Header>` for changing languages. Translate the text accordingly.
+   - Do not add translations to `<About>` component.
+
+4. **About Component Grid:**
+   - Add CSS styling for the `<About>` page to display items in a grid.
+   - Create a `styles` directory in `src` and add `About.css` with specific grid styles.
+
+5. **Pagination:**
+   - Create pagination for the `<About>` page.
+   - Display the first 12 items by default and load more items when "Show more" button is pressed.
+   - Use `useState` to manage the number of visible items.
+
+### Useful Links:
+- [React Component Styling](https://reactjs.org/docs/faq-styling.html)
+- [useEffect React Docs](https://reactjs.org/docs/hooks-effect.html)
+- [React Router Docs](https://reactrouter.com/web/guides/quick-start)
+
+## Week 11
+
+**Assignment: Advanced React Features with Material UI**
+
+This week, we'll create a joke generator app using Material UI, `useEffect` clean-up, and custom hooks. The app will generate random jokes and save selected ones.
+
+### Requirements and Scoring
+
+1. **Material-UI:**
+   - Install and use Material UI (latest version v6).
+   - Create an `AppBar` in `Header.tsx` with two `<Button>` components: "home" ("/") and "saved" ("/saved").
+   - Use React Router for navigation. Use `react-router-dom` Links inside Material-UI buttons to avoid full page loads.
+
+2. **Fetching a Joke with useEffect:**
+   - Create `FrontPage.tsx` with a Material UI button to fetch a random joke from [Joke API](https://official-joke-api.appspot.com/random_joke).
+   - Use `useEffect` for fetching jokes, with `AbortController` for graceful termination.
+   - Use `useState` to track fetch status, displaying "Loading a joke..." while fetching, and show the joke in a Material UI `Card` component upon completion.
+   - Create an interface or type for the joke data.
+
+3. **Creating Custom Hook:**
+   - Create a custom hook `useJokes` in `src/hooks/useJokes.ts` for saving jokes.
+   - The hook should manage `savedJokes` state and have a `saveJoke` function.
+   - Add a "Save joke" button in `FrontPage.tsx` to save jokes using the custom hook.
+
+4. **Display Jokes on Saved Page:**
+   - Create `SavedPage.tsx` to display all saved jokes using the custom hook.
+   - Display jokes in Material UI `Card` components, and show "No saved jokes yet." if none exist.
+   - Initialize the custom hook in a higher-level component (e.g., `App.tsx`) and pass it down as props.
+
+5. **Deleting Saved Jokes:**
+   - Modify the custom hook to include a `deleteJoke` function for removing jokes by ID.
+   - Add a delete button in the `SavedPage.tsx` Card component to remove jokes when clicked.
+
+### Useful Links:
+- [useEffect Hook](https://reactjs.org/docs/hooks-effect.html)
+- [Material UI](https://mui.com/)
+- [React Custom Hooks](https://reactjs.org/docs/hooks-custom.html)
+- [useEffect Clean Up](https://reactjs.org/docs/hooks-effect.html#cleaning-up-an-effect)
+
+
+## Week 12
+
+**Assignment: Creating a Full-Stack Application**
+
+This week, we'll create a full-stack app by integrating a server-side Node application with a client-side React application, and configuring both development and production environments.
+
+### Requirements and Scoring
+
+1. **Client Setup:**
+   - Create a project with both Express and React in the same folder.
+   - Initialize a React app with Vite and remove default code from `App.tsx`, adding an `<h1>` element with "books".
+   - Run `npm init` in the root folder and update `package.json` to include the provided scripts.
+   - Ensure React runs on port 3000.
+
+2. **Express and Mongo Setup:**
+   - Create a `server` folder and initialize a TypeScript Node application.
+   - Update `package.json` to include necessary scripts for both client and server dependencies.
+   - Install `nodemon` and `tsc-watch`, and set up scripts for running the Express server in development mode.
+   - Attach MongoDB, create a `Books` collection, and set up a POST route `/api/book/` to save books in JSON format.
+
+3. **Connecting React and Express for Development Environment:**
+   - Proxy React API requests to `http://localhost:1234` for development.
+   - Enable CORS in the server for development environment.
+   - Create a React form to send book data to the server via the POST route `/api/book/`.
+   - Use the attributes specified in Table 1 for form elements.
+
+4. **Advanced Routing:**
+   - Install `react-router-dom` in the client folder.
+   - Show book information on a new page `/book/bookName` after submission.
+   - Ensure URLs are URL-encoded for spaces.
+   - Display a 404 message if the user navigates to a non-existent page.
+
+5. **Building the Application for Production Environment:**
+   - Modify `package.json` to include a "build" script for compiling the React project.
+   - Serve the built React application using the Express server.
+   - Add necessary scripts to `server/package.json` for starting the server in production mode.
+   - Configure the Express server to serve static files from the `../client/build` folder.
+   
+### Table 1. Elements for Sending Book Information
+| Element | id      | type   |
+|---------|---------|--------|
+| input   | name    | string |
+| input   | author  | string |
+| input   | pages   | number |
+| input   | submit  | submit |
+
+### Useful Documents and Links:
+- [React Router](https://reactrouter.com/)
+- [CORS Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [MongoDB](https://docs.mongodb.com/)
+
+# Project
+
+**Project Work**
+
+### Introduction:
+Implement a system for users to register, log in, and post cards to a kanban board, similar to Trello. Non-authenticated users cannot see anything. Data must be saved to a database without using CMS (e.g., WordPress, Drupal). Documentation is required. Basic features give 25 points.
+
+### Mandatory Requirements:
+- **Backend Implementation:** 
+  - Use Node.js (Express, Meteor, etc.)
+  - No solutions with Java, PHP, Perl, Python, Ruby.
+- **Database Utilization:**
+  - Use MongoDB, MariaDB, or any suitable database.
+- **Authentication:**
+  - Users can register and log in (JWT or session-based).
+  - Only authenticated users can see, add, or remove columns/cards.
+
+### Features:
+Authenticated users can:
+- Add/remove/rename columns on their board.
+- Add/move/remove cards on their board.
+- Move cards up/down and between columns (buttons or drag and drop).
+- Logout.
+
+Non-authenticated users can:
+- Register and login.
+
+### Additional Features (Optional):
+| Feature | Max Points |
+|---------|-------------|
+| Utilization of frontside framework (React, Angular, Vue) | 3 |
+| Cards reorderable with drag and drop | 2 |
+| Columns reorderable | 1 |
+| User can set card color | 1 |
+| Login with Facebook, Google, etc. (Passport.js) | 3 |
+| Admin account managing all users/boards | 3 |
+| Accessibility testing | 3 |
+| Search filter for cards with keywords | 3 |
+| Editable content with double-click | 4 |
+| User profiles with images | 3 |
+| Cards with comments | 3 |
+| Timestamps for cards/comments | 4 |
+| Cards have estimated completion time | 1 |
+| Register time spent on tasks/cards | 1 |
+| Translation of UI in multiple languages | 2 |
+| Multi-user collaboration on same board | 5 |
+| Unit tests and automated testing (e.g., Cypress) | 5 |
+
+### Penalties:
+| Issue | Points |
+|-------|--------|
+| Application does not work | -100 |
+| No documentation | -100 |
+| Missing parts (e.g., no database, authentication failure) | 0 – -25 |
+| Poor TypeScript usage (continuous use of `any` type) | 0 – -10 |
+| Inappropriate content (hate speech, memes) | -100 |
+| Code not written/commented in English | -10 |
+| Code not commented at all | -10 |
+| Code not properly commented | -5 |
+
+### Notes:
+- Front and backend can be different implementations.
+- Projects using more than 60k ports will not be graded.
+
+### Submission:
+Submit your code via link in Moodle to CodeGrade.
+
+### Plagiarism:
+All projects will be checked for plagiarism and incidents reported.
+
+---
+
+Best of luck with your project work! 🚀
