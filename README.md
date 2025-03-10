@@ -761,7 +761,7 @@ This week, we'll create a full-stack app by integrating a server-side Node appli
 - [CORS Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 - [MongoDB](https://docs.mongodb.com/)
 
-# Project
+# Project                                 CHECK PROKKIS FOLDER FOR PDF WHERE MORE INFO
 
 **Project Work**
 
@@ -824,13 +824,3 @@ Non-authenticated users can:
 ### Notes:
 - Front and backend can be different implementations.
 - Projects using more than 60k ports will not be graded.
-
-### Submission:
-Submit your code via link in Moodle to CodeGrade.
-
-### Plagiarism:
-All projects will be checked for plagiarism and incidents reported.
-
----
-
-Best of luck with your project work! 🚀
